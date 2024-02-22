@@ -2,18 +2,20 @@
     display: flex;
     width: 280px;
     height: auto;
-    /* background-color: yellowgreen; */
     flex-direction: column;
     justify-content: center;
     align-items: center;
     margin: auto;
 }
 
+fieldset {
+    margin-bottom: 15px;
+}
+
 .field {
     display: flex;
     width: 250px;
     height: auto;
-    /* background-color: orange; */
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
@@ -24,12 +26,11 @@
     width: 230px;
 }
 
-.collapse {
-    padding: 10px 0
-}
+/* .collapse {
+    padding: 10px 0;
+} */
 
 .collapseLabel {
     width: 250px;
     margin-left: 0;
-    margin-bottom: 5px;
 }

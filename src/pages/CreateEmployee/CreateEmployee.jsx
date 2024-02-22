@@ -8,5 +8,4 @@ function CreateEmployee () {
         </main>
     )
 }
-
 export default CreateEmployee

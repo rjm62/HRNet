@@ -1,7 +1,5 @@
 main {
-    /* width: 50%; */
-    margin: auto;
+    margin:auto;
     padding: 0;
     box-sizing: border-box;
-    /* background-color: red; */
 }

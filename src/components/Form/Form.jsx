@@ -1,8 +1,19 @@
 import  DatePicker from 's3d-react-datepicker'
+import Dropdown from '../../components/Dropdown/Dropdown'
+import {useSelector, useDispatch} from 'react-redux'
+import '../../style/EmployeeList.css'
 import '../../style/Form.css'
+import { useState } from 'react'
 
 function Form () {
-   
+    const [dropdownFirst, setDropdownFirst] = useState("un")
+    const [dropdownSecond, setDropdownSecond] = useState("deux")
+
+    const selectorChoice = useSelector((state) => state.choice.dropdown)
+    const dispatch = useDispatch()
+
+    console.log("TARZAN")
+  
     return (
         <form className="containerForm">
             <div className="field">
@@ -33,18 +44,22 @@ function Form () {
                 </div>
                 <div className='field address'>
                     <label for="state">State</label>
-                    <input type="text" id="state" name="state" />
+                   {/* {dropdownFirst!=="state" ? setDropdownFirst("state"): "" } */}
+                    <div className='fifi'>
+                        <Dropdown /> 
+                    </div>
                 </div>
                 <div className='field address'>
                     <label for="zipCode">Zip Code</label>
                     <input type="text" id="zipCode" name="zipCode" />
                 </div>
             </fieldset>
-            <p className='collapseLabel'>Department</p>
-            <select className="field address collapse" for="department">
-                <option value="sales">Sales</option>
-            </select>         
-            <button className='saveButton'>Save</button>
+                <div className='field'>
+                    <label for="department">Department</label>
+                    {/* {dropdownSecond!=="departments" ? setDropdownSecond("departments"): ""} */}
+                    <Dropdown /> 
+                </div>  
+            {/* <button className='saveButton'>Save</button> */}
         </form>
     )
 }

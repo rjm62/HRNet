@@ -1,7 +1,18 @@
 .dataArrayContainer {
     display: flex;
+    width: 100%;
     flex-direction: column;
     justify-self: center;
     align-items: center;
+}
 
+.tablePaginationContainer {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.tablePaginationButtons {
+    padding: 20px 20px;
 }
