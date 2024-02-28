@@ -21,16 +21,3 @@ fieldset {
     align-items: flex-start;
     margin-bottom: 15px;
 }
-
-.address {
-    width: 230px;
-}
-
-/* .collapse {
-    padding: 10px 0;
-} */
-
-.collapseLabel {
-    width: 250px;
-    margin-left: 0;
-}

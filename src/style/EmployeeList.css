@@ -21,21 +21,3 @@ main {
     height: 40px;
     margin-top: 30px;
 }
-
-.choixLinesNumber {
-    display: flex;
-   margin-left: 0;
-    font-size: 20px;
-}
-
-.riri {
-    display: flex;
-    justify-content: space-around;
-    align-items: flex-start;
-    width: 360px;
-    padding-top: 0;
-    line-height: 0;
-    position: absolute;
-    top: 90px;
-    z-index: 2;
-}

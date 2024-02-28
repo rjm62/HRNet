@@ -3,7 +3,6 @@ import '../../style/Header.css'
 import { useEffect, useState } from 'react'
 import {useSelector, useDispatch} from 'react-redux'
 import {choiceHeader} from '../../redux/reducers'
-import {choiceDropdown} from '../../redux/reducers'
 
 function Header () {
     const [choice, setChoice] = useState("choice")
@@ -12,7 +11,6 @@ function Header () {
 
     const displayChange = () => {
         dispatch(choiceHeader(""))
-        dispatch(choiceDropdown("linesNumber"))
     }
 
     useEffect(() => {

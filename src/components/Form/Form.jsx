@@ -1,65 +1,98 @@
 import  DatePicker from 's3d-react-datepicker'
 import Dropdown from '../../components/Dropdown/Dropdown'
-import {useSelector, useDispatch} from 'react-redux'
+import {choiceDropdownStateSelection, choiceDropdownDepartmentSelection, choiceNewEmployee} from '../../redux/reducers'
 import '../../style/EmployeeList.css'
 import '../../style/Form.css'
-import { useState } from 'react'
+import { useState,useEffect } from 'react'
+import { useSelector,useDispatch } from 'react-redux'
 
-function Form () {
-    const [dropdownFirst, setDropdownFirst] = useState("un")
-    const [dropdownSecond, setDropdownSecond] = useState("deux")
 
-    const selectorChoice = useSelector((state) => state.choice.dropdown)
-    const dispatch = useDispatch()
 
-    console.log("TARZAN")
-  
+function Form () {  
+const [firstName,setFirstName] = useState("")
+const [lastName, setLastName] = useState("")
+const [dateOfBirth, setDateOfBirth] = useState("")
+const [startDate, setStartDate] = useState("")
+const [street, setStreet] = useState("")
+const [city, setCity] = useState("")
+const [state, setState] = useState("")
+const [department, setDepartment] = useState("")
+const [zipCode, setZipCode] = useState("")
+const selectorChoiceState = useSelector((state) => state.choice.dropdownStateSelection)
+const selectorChoiceDepartment = useSelector((state) => state.choice.dropdownDepartmentSelection)
+const dispatch = useDispatch()
+
+const dataEnter = (event) => {
+    event.preventDefault()
+    setFirstName(event.currentTarget.firstName.value)
+    setLastName(event.currentTarget.lastName.value)
+    setStartDate(event.currentTarget.startDate.value)
+    setStreet(event.currentTarget.street.value)
+    setCity(event.currentTarget.city.value)
+    setZipCode(event.currentTarget.zipCode.value)
+    }
+
+const save = () => {
+    const newEmployee = {
+        firstName: firstName,
+        lastName: lastName,
+        startDate: startDate,
+        department: selectorChoiceDepartment,
+        dateOfBirth: dateOfBirth,
+        street: street,
+        city: city,
+        state:selectorChoiceState,
+        zipCode: zipCode
+    }  
+    dispatch(choiceNewEmployee(newEmployee)) 
+    
+}
+
     return (
-        <form className="containerForm">
+        <form className="containerForm" onChange={(e) =>dataEnter(e)} onSubmit={save}>
             <div className="field">
-                <label for="firstName">First Name</label>
+                <label htmlFor="firstName">First Name</label>
                 <input type="text" id="firstName" name="firstName" />
             </div>
             <div className="field">
-                <label for="lastName">Last Name</label>
+                <label htmlFor="lastName">Last Name</label>
                 <input type="text" id="lastName" name="lastName" />
             </div>
             <div className="field">
-                <label for="dateOfBirth">Date of Birth</label>
-                <DatePicker />
+                <label htmlFor="dateOfBirth" ariel-label="calender">Date of Birth</label>
+                <DatePicker id="dateOfBirth" name="dateOfBirth" onChange={(date) => {setDateOfBirth(date?.format('DD/MM/YYYY'));}}/>
             </div>
             <div className="field">
-                <label for="startdate">Start Date</label>
-                <DatePicker />
+                <label htmlFor="startDate" ariel-label="calender">Start Date</label>
+                <DatePicker id="startDate" name="startDate" onChange={(date) => {setStartDate(date?.format('DD/MM/YYYY'));}} />
             </div>
             <fieldset>
                 <legend>Address</legend>
                 <div className='field address'>
-                    <label for="street">Street</label>
+                    <label htmlFor="street">Street</label>
                     <input type="text" id="street" name="street" />
                 </div>
                 <div className='field address'>
-                    <label for="city">City</label>
+                    <label htmlFor="city">City</label>
                     <input type="text" id="city" name="city" />
                 </div>
                 <div className='field address'>
-                    <label for="state">State</label>
-                   {/* {dropdownFirst!=="state" ? setDropdownFirst("state"): "" } */}
+                    <label htmlFor="state">State</label>
                     <div className='fifi'>
-                        <Dropdown /> 
+                        <Dropdown option="linesNumber" /> 
                     </div>
                 </div>
                 <div className='field address'>
-                    <label for="zipCode">Zip Code</label>
+                    <label htmlFor="zipCode">Zip Code</label>
                     <input type="text" id="zipCode" name="zipCode" />
                 </div>
             </fieldset>
-                <div className='field'>
-                    <label for="department">Department</label>
-                    {/* {dropdownSecond!=="departments" ? setDropdownSecond("departments"): ""} */}
-                    <Dropdown /> 
-                </div>  
-            {/* <button className='saveButton'>Save</button> */}
+            <div className='field'>
+                <label htmlFor="department">Department</label>
+                <Dropdown  option="departments"  onChange={(date) => {setDepartment(date? "coucou":"")}}/> 
+            </div>  
+            <button className='saveButton' type="submit">Save</button>
+           
         </form>
     )
 }

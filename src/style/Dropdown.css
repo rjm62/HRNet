@@ -49,9 +49,17 @@ body div {
     .collapseOrder p {
         display: flex;
         font-size: 15px;
+        margin-left: 10px;
         /* background-color: blue;
         color: red; */
         line-height: 0;
+    }
+
+    .collapseOrder img {
+        display: flex;
+        width: 20px;
+        margin-right: 10px;
+        background-color:#f6f6f6;
     }
     
     .collapseIcon {
