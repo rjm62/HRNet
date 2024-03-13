@@ -1,12 +1,10 @@
 import  DatePicker from 's3d-react-datepicker'
 import Dropdown from '../../components/Dropdown/Dropdown'
-import {choiceDropdownStateSelection, choiceDropdownDepartmentSelection, choiceNewEmployee} from '../../redux/reducers'
+import {choiceModale, choiceNewEmployee} from '../../redux/reducers'
 import '../../style/EmployeeList.css'
 import '../../style/Form.css'
-import { useState,useEffect } from 'react'
+import { useState} from 'react'
 import { useSelector,useDispatch } from 'react-redux'
-
-
 
 function Form () {  
 const [firstName,setFirstName] = useState("")
@@ -15,13 +13,13 @@ const [dateOfBirth, setDateOfBirth] = useState("")
 const [startDate, setStartDate] = useState("")
 const [street, setStreet] = useState("")
 const [city, setCity] = useState("")
-const [state, setState] = useState("")
 const [department, setDepartment] = useState("")
 const [zipCode, setZipCode] = useState("")
 const selectorChoiceState = useSelector((state) => state.choice.dropdownStateSelection)
 const selectorChoiceDepartment = useSelector((state) => state.choice.dropdownDepartmentSelection)
 const dispatch = useDispatch()
-
+// const datea= new Date()
+// const year = datea.getFullYear()
 const dataEnter = (event) => {
     event.preventDefault()
     setFirstName(event.currentTarget.firstName.value)
@@ -32,7 +30,8 @@ const dataEnter = (event) => {
     setZipCode(event.currentTarget.zipCode.value)
     }
 
-const save = () => {
+const save = (event) => {
+    event.preventDefault()
     const newEmployee = {
         firstName: firstName,
         lastName: lastName,
@@ -45,11 +44,12 @@ const save = () => {
         zipCode: zipCode
     }  
     dispatch(choiceNewEmployee(newEmployee)) 
+    dispatch(choiceModale("true"))
     
 }
 
     return (
-        <form className="containerForm" onChange={(e) =>dataEnter(e)} onSubmit={save}>
+        <form className="containerForm" onChange={(e) =>dataEnter(e)} onSubmit={(e) =>save(e)}>
             <div className="field">
                 <label htmlFor="firstName">First Name</label>
                 <input type="text" id="firstName" name="firstName" />
@@ -60,7 +60,7 @@ const save = () => {
             </div>
             <div className="field">
                 <label htmlFor="dateOfBirth" ariel-label="calender">Date of Birth</label>
-                <DatePicker id="dateOfBirth" name="dateOfBirth" onChange={(date) => {setDateOfBirth(date?.format('DD/MM/YYYY'));}}/>
+                <DatePicker  className="toto" id="dateOfBirth" name="dateOfBirth" onChange={(date) => {setDateOfBirth(date?.format('DD/MM/YYYY'));}}/>
             </div>
             <div className="field">
                 <label htmlFor="startDate" ariel-label="calender">Start Date</label>
@@ -79,7 +79,7 @@ const save = () => {
                 <div className='field address'>
                     <label htmlFor="state">State</label>
                     <div className='fifi'>
-                        <Dropdown option="linesNumber" /> 
+                        <Dropdown option="states" /> 
                     </div>
                 </div>
                 <div className='field address'>

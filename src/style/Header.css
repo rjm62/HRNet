@@ -3,4 +3,7 @@ header {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    width: 280px;
+    height: auto;
+    margin: auto;
 }

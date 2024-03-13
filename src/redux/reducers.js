@@ -4,17 +4,18 @@ export const choiceSlice = createSlice({
     name: "choice",
     initialState: {
     header: "create",
+    modale: "false",
     dropdown:"departments",
-    dropdownStateSelection: "coucou",
-    dropdownDepartmentSelection: "oupsssss",
+    dropdownStateSelection: "",
+    dropdownDepartmentSelection: "",
     newEmployee: [{
-        firstName: 1,
-        lastName: 2,
+        firstName: "",
+        lastName: "",
         startDate: "",
         department: "",
         dateOfBirth: "",
-        street: 3,
-        city: 4,
+        street: "",
+        city: "",
         state: "",
         zipCode: ""
     }
@@ -24,6 +25,10 @@ export const choiceSlice = createSlice({
     reducers: {
         choiceHeader: (state, action) => {
             state.header = action.payload;
+        },
+
+        choiceModale: (state, action) => {
+            state.modale = action.payload;
         },
 
         choiceDropdown: (state, action) => {
@@ -40,13 +45,10 @@ export const choiceSlice = createSlice({
 
         choiceNewEmployee: (state, action) => {
             state.newEmployee.unshift(action.payload)
-    
-            console.log(action.payload)
-            // console.log(state.newEmployee)  
         }        
     },
 });
 
-export const {choiceHeader, choiceDropdown, choiceDropdownStateSelection, choiceDropdownDepartmentSelection, choiceNewEmployee} = choiceSlice.actions;
+export const {choiceHeader, choiceDropdown, choiceDropdownStateSelection, choiceDropdownDepartmentSelection, choiceNewEmployee, choiceModale} = choiceSlice.actions;
 
 export const choiceReducer =choiceSlice.reducer

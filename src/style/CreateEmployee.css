@@ -1,4 +1,9 @@
 main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 280px;
     margin:auto;
     padding: 0;
     box-sizing: border-box;

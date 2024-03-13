@@ -5,16 +5,17 @@ import CreateEmployee from './pages/CreateEmployee/CreateEmployee'
 import EmployeeList from './pages/EmployeeList/EmployeeList'
 import Header from './components/Header/Header'
 import './App.css';
+import {persistStore} from 'redux-persist'
 
 function App() {
   return (
     <Router>
-      <Provider store={store}>
+      <Provider store={store}> 
         <Header />
-        <Routes>
-          <Route path="/" element={<CreateEmployee />} />  
-          <Route path="/employee-list" element={<EmployeeList />} /> 
-        </Routes>
+          <Routes>
+            <Route path="/" element={<CreateEmployee />} />  
+            <Route path="/employee-list" element={<EmployeeList />} /> 
+          </Routes>
       </Provider>
     </Router>
   )

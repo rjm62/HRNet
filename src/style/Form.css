@@ -1,10 +1,10 @@
 .containerForm {
     display: flex;
-    width: 280px;
-    height: auto;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    width: 280px;
+    height: auto;
     margin: auto;
 }
 
@@ -19,5 +19,9 @@ fieldset {
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
-    margin-bottom: 15px;
+    margin-bottom: 15px ;
+}
+
+toto {
+    width: 280px
 }
