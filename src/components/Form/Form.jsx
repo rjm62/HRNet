@@ -15,11 +15,21 @@ const [street, setStreet] = useState("")
 const [city, setCity] = useState("")
 const [department, setDepartment] = useState("")
 const [zipCode, setZipCode] = useState("")
+const [interditDate, setInterditDate] = useState("false")
 const selectorChoiceState = useSelector((state) => state.choice.dropdownStateSelection)
 const selectorChoiceDepartment = useSelector((state) => state.choice.dropdownDepartmentSelection)
 const dispatch = useDispatch()
-// const datea= new Date()
-// const year = datea.getFullYear()
+
+const check = (date) => {
+    setDateOfBirth(date?.format('MM/DD/YYYY')); 
+    const todayDate= new Date()
+    const timeInDate = todayDate.getTime()
+    let date1 = new Date(date)
+    let datefinal = date1.getTime()
+    const checking = timeInDate - datefinal
+    checking < 567993600000 ? setInterditDate("true") : setInterditDate("false")
+}
+
 const dataEnter = (event) => {
     event.preventDefault()
     setFirstName(event.currentTarget.firstName.value)
@@ -44,8 +54,7 @@ const save = (event) => {
         zipCode: zipCode
     }  
     dispatch(choiceNewEmployee(newEmployee)) 
-    dispatch(choiceModale("true"))
-    
+    dispatch(choiceModale("true"))  
 }
 
     return (
@@ -60,8 +69,9 @@ const save = (event) => {
             </div>
             <div className="field">
                 <label htmlFor="dateOfBirth" ariel-label="calender">Date of Birth</label>
-                <DatePicker  className="toto" id="dateOfBirth" name="dateOfBirth" onChange={(date) => {setDateOfBirth(date?.format('DD/MM/YYYY'));}}/>
-            </div>
+                <DatePicker  className="dateOfBirth" id="dateOfBirth" name="dateOfBirth" onChange={(date) =>check(date) }/>
+            </div>    
+            {interditDate === "false" ? null : <p className='commentOnAge'> Sorry you are too young </p>}
             <div className="field">
                 <label htmlFor="startDate" ariel-label="calender">Start Date</label>
                 <DatePicker id="startDate" name="startDate" onChange={(date) => {setStartDate(date?.format('DD/MM/YYYY'));}} />
@@ -91,7 +101,7 @@ const save = (event) => {
                 <label htmlFor="department">Department</label>
                 <Dropdown  option="departments"  onChange={(date) => {setDepartment(date? "coucou":"")}}/> 
             </div>  
-            <button className='saveButton' type="submit">Save</button>
+            {interditDate === "false" ? <button className='saveButton' type="submit">Save</button> :<button className='saveButton'>Save</button>}
            
         </form>
     )

@@ -26,7 +26,7 @@
     "redux": "^5.0.1",
     "redux-persist": "^6.0.0",
     "redux-thunk": "^3.1.0",
-    "rudy-modal": "^0.1.8",
+    "rudy-modal": "^0.1.9",
     "s3d-react-datepicker": "^0.1.3",
     "styled-components": "^6.1.8",
     "web-vitals": "^2.1.4"

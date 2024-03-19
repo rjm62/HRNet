@@ -22,6 +22,10 @@ fieldset {
     margin-bottom: 15px ;
 }
 
-toto {
-    width: 280px
+.commentOnAge {
+    width: 200px;
+    height: 20px;
+    color: rgb(232, 12, 12);
+    margin-top: -15px;
+    margin-left: -40px;
 }
